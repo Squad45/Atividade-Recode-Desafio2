@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap');
+@import '_index';
+@import '_scrollbar';
+@import '_cadastro';
+@import '_responsividade';
+
+
+
+:root{
+    --cor-primaria: #1A535C;  /*Texto e titulos*/
+    --cor-secundaria:#177E89;   /*Subtitulo*/
+    --cor-terciaria: #97c9cf;   /*background de div para ressaltar uma parte*/
+    --cor-background: #F4EBE8;
+    --cor-bg-button: rgba(247, 247, 255, 0.5);
+    --cor-font-button: #F4F3EE;
+    --cor-tituloD: #f8f4f4;     /*para div de destaques*/
+    --cor-paragrafoD: #f8f4f4a8;
+    --font-titulo: 'Lato', sans-serif;
+    --font-paragrafo:'Roboto', sans-serif;
+    
+}
+
