@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="pt-br">
 
@@ -73,37 +75,37 @@
           <!-- input de texto Nome -->
           <div class="div-input">
             <label for="nome">Nome do Representante</label>
-            <input type="text" placeholder="Nome completo">
+            <input type="text" name="nome" placeholder="Nome completo">
             <div class="underline"></div>
           </div>
           <!-- input de texto Cargo -->
           <div class="div-input">
             <label for="cargo">Cargo do Representante</label>
-            <input type="text" placeholder="Digite...">
+            <input type="text" name="cargo" placeholder="Digite...">
             <div class="underline"></div>
           </div>
           <!-- input de texto nomeEmp -->
           <div class="div-input">
             <label for="nomeEmp">Nome da Empresa/Escola</label>
-            <input type="text" placeholder="Digite...">
+            <input type="text" name="nomeEmp" placeholder="Digite...">
             <div class="underline"></div>
           </div>
           <!-- input de texto Email -->
           <div class="div-input">
             <label for="email">Email:</label>
-            <input type="email" placeholder="Digite...">
+            <input type="email" name="email" placeholder="Digite...">
             <div class="underline"></div>
           </div>
           <!-- input de texto Telefone  -->
           <div class="div-input">
             <label for="telefone">Telefone:</label>
-            <input type="tel" placeholder="(xx) xxxxx-xxxx">
+            <input type="tel" name="telefone" placeholder="(xx) xxxxx-xxxx">
             <div class="underline"></div>
           </div>
           <!-- input de texto CPF -->
           <div class="div-input">
             <label for="cpf">CNPJ:</label>
-            <input type="text" placeholder="Apenas número">
+            <input type="text" name="cnpj" placeholder="Apenas número">
             <div class="underline"></div>
           </div>
 
@@ -112,19 +114,19 @@
         <div class="disp-none" id="formE2">
           <div class="div-input">
             <label for="nome">CEP</label>
-            <input type="text" placeholder="CEP">
+            <input type="text" name="cep" placeholder="CEP">
             <div class="underline"></div>
           </div>
 
           <div class="div-input">
             <label for="email">Endereço</label>
-            <input type="email" placeholder="Endereço">
+            <input type="text" name="endereco" placeholder="Endereço">
             <div class="underline"></div>
           </div>
 
           <div class="div-input">
             <label for="telefone">ponto de Referência</label>
-            <input type="text" placeholder="Digite...">
+            <input type="text" name="pontoRef" placeholder="Digite...">
             <div class="underline"></div>
           </div>
 
@@ -144,7 +146,10 @@
             </div>
           </div>
 
+		<input type="submit" class="btn-continue disp-none" id="btn-continueE" value="continue">
+		
         </div>
+                
       </form>
 
       <!-- BOTAO -->
@@ -165,62 +170,13 @@
               d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
           </svg>
         </button>
-        
-       <a id="ancoraE" href=""><button class="btn-continue disp-none" id="btn-continueE">
-          Continue
-        </button></a>
+
       </div>
     </main>
   </section>
 
 
   <script src="./script/script.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- estrutura do formulário -->
-  <!-- nome da empresa/escola
-        Nome do representante | cargo do representante
-        CNPJ
-        endereço | CEP
-        
-        telefone 
-        email
-       
-        escolha
-        caso doador
-        
-        pesquisa
-        radios( dispositivo movel
-                computador
-                notebook)
-
-          caixa de texto com expecificações
-        
-          caso precisa de doação
-       
-
-        (por enquanto)  
-        intuito das doações placeholder"quantidade da turma"
-        caixa de texto explicação do pq de ultilizar a doaçao
-        -->
-
-
-
 
 
 

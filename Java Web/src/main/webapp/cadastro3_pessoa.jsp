@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="pt-br">
 
@@ -73,25 +75,25 @@
                     <!-- input de texto Nome -->
                     <div class="div-input">
                         <label for="nome">Nome:</label>
-                        <input type="text" placeholder="Nome completo">
+                        <input type="text" name="nome" placeholder="Nome completo">
                         <div class="underline"></div>
                     </div>
                     <!-- input de texto Email -->
                     <div class="div-input">
                         <label for="email">Email:</label>
-                        <input type="email" placeholder="Digite...">
+                        <input type="email" name="email" placeholder="Digite...">
                         <div class="underline"></div>
                     </div>
                     <!-- input de texto Telefone  -->
                     <div class="div-input">
                         <label for="telefone">Telefone:</label>
-                        <input type="tel" placeholder="(xx) xxxxx-xxxx">
+                        <input type="tel" name="telefone" placeholder="(xx) xxxxx-xxxx">
                         <div class="underline"></div>
                     </div>
                     <!-- input de texto CPF -->
                     <div class="div-input">
                         <label for="cpf">CPF:</label>
-                        <input type="text" placeholder="Apenas número">
+                        <input type="text" name="cpf" placeholder="Apenas número">
                         <div class="underline"></div>
                     </div>
                 </div>
@@ -99,19 +101,19 @@
                 <div class="disp-none" id="formP2">
                     <div class="div-input">
                         <label for="nome">CEP</label>
-                        <input type="text" placeholder="CEP">
+                        <input type="text" name="cep" placeholder="CEP">
                         <div class="underline"></div>
                     </div>
 
                     <div class="div-input">
-                        <label for="email">Endereço</label>
-                        <input type="email" placeholder="Endereço">
+                        <label for="endereço">Endereço</label>
+                        <input type="text" name="endereco" placeholder="Endereço">
                         <div class="underline"></div>
                     </div>
 
                     <div class="div-input">
                         <label for="telefone">ponto de Referência</label>
-                        <input type="text" placeholder="Digite...">
+                        <input type="text" name="pontoRef" placeholder="Digite...">
                         <div class="underline"></div>
                     </div>
 
@@ -130,7 +132,7 @@
                             </label>
                           </div>
                     </div>
-
+                    <input class="btn-continue disp-none" id="btn-continueP" type="submit" value="continue">
                 </div>
             </form>
 
@@ -152,10 +154,6 @@
               d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
           </svg>
         </button>
-        
-       <a id="ancoraP" href=""><button class="btn-continue disp-none" id="btn-continueP">
-          Continue
-        </button></a>
       </div>
 
         </main>

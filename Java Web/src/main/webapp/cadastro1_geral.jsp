@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -36,10 +38,16 @@
       <!-- titulo -->
           <h3>Escolha como quer se cadastrar</h3>
 
-          <form class="form-pessoa" action="">
+          <form class="form-pessoa" action="escolha">
               <div class="div-input">
+              <!-- 
                 <a class="ancora-escolha" href="./cadastro2_empresa.html">Empresa/Instituição</a>
                 <a class="ancora-escolha" href="./cadastro3_pessoa.html">Pessoa</a>
+                 -->
+                 
+                <input type="submit" name="instituicao" class="ancora-escolha " id="escolha-1" value="Empresa/Instituição">
+                <input type="submit" name="pessoa" class="ancora-escolha " id="escolha-2" value="Pessoa">
+                
               </div>
           </form>
       </main>

@@ -1,7 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="pt-br">
   <head>
-    <title>Preciso de equipamento</title>
+    <title>Doação</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,16 +15,17 @@
   </head>
   <body>
 
-         <!-- section da header navbar -->
-    <section class="container-fuid">
-      <nav class="nav justify-content-center fixed-top nav-bg">
-        <a class="nav-link text-light" href="./index.html">HOME</a>
-        <a class="nav-link text-light" href="./projeto.html">PROJETOS</a>
-        <a class="nav-link text-light" href="./cadastro1_geral.jsp">CADASTRE-SE</a>
-        <a class="nav-link text-light" href="./contatos.html">CONTATOS</a>
-      </nav>
+     <!-- section da header navbar -->
+     <section class="container-fuid">
+        <nav class="nav justify-content-center fixed-top nav-bg">
+            <a class="nav-link text-light" href="./index.html">HOME</a>
+            <a class="nav-link text-light" href="./projeto.html">PROJETOS</a>
+            <a class="nav-link text-light" href="./cadastro1_geral.jsp">CADASTRE-SE</a>
+            <a class="nav-link text-light" href="./contatos.html">CONTATOS</a>
+        </nav>
     </section>
-
+    
+        <!-- background da pagina -->
     <section class="container-fluid sect-form">
         <!-- imagem de fundo -->
         <div class="img-back">
@@ -33,23 +36,31 @@
     
     
         <!-- titulo -->
-            <h2 class="titulo-precisa">Precisa de Equipamento</h2>
+            <h2>Para Doação</h2>
 
             <form class="form-pessoa" action="">
                 <div class="div-input">
-                    <label for="especifiicação">Explique sua situação para nós:</label>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Digite..."></textarea>
+                    <label for="escolha">Qual o dispositivo para doação?</label>
+                    <select name="" id="selection-doar">
+                        <option value="padrão">--</option>
+                        <option value="mobile">Celular</option>
+                        <option value="desktop">Computador</option>
+                        <option value="laptop">Notebook</option>
+                        
+                    </select>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="div-input">
+                    <label for="especifiicação">Fale sobre o aparelho:</label>
+                    <textarea name="" id="" cols="30" rows="10" placeholder="ano, houve problemas, estado atual,etc..."></textarea>
 
                     <div class="underline"></div>
                 </div>
                 <input class="confirm" id="confirm" type="submit" value="Enviar">
             </form>
         </main>
-    </section>
-
-
-
-
+</section>
 
 
 
