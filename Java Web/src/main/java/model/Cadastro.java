@@ -13,7 +13,23 @@ public class Cadastro {
 	private String telefone;
 	private String tipoEquipamento;
 	private String descricao;
+	private String opcaoDoador;
 	
+	
+	public String getOpcaoDoador() {
+		return opcaoDoador;
+	}
+
+	public void setOpcaoDoador(String opcaoDoador) {
+		this.opcaoDoador = opcaoDoador;
+	}
+
+	@Override
+	public String toString() {
+		return "Cadastro [id=" + id + ", escolha=" + escolha + ", nome=" + nome + ", cargo=" + cargo
+				+ ", nomeInstituicao=" + nomeInstituicao + ", email=" + email + ", cpf=" + cpf + ", cnpj=" + cnpj
+				+ ", telefone=" + telefone + ", tipoEquipamento=" + tipoEquipamento + ", descricao=" + descricao + "]";
+	}
 	
 	public int getId() {
 		return id;
