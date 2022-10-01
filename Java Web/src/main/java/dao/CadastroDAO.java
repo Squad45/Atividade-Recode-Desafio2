@@ -72,6 +72,7 @@ private static String sql;
 				
 				Cadastro cliente = new Cadastro();
 				
+				
 				cliente.setId(resultSet.getInt("id"));
 				cliente.setNome(resultSet.getString("nome"));
 				cliente.setCpf(resultSet.getString("cpf"));
