@@ -66,7 +66,7 @@
 
 
             <!-- começo do formulario pessoa -->
-            <form class="form-pessoa" action="">
+            <form class="form-pessoa" id="form-pessoa" action="" method="post">
 
                 <!-- PARTE 1 -->
                 <div class="disp-non" id="formP1">
@@ -117,18 +117,15 @@
 
                     <div class="escolha" id="escolhaPessoa">
                         <h5>Eu:</h5>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="doadorP()">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                              Sou doador
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="precisoP()">
-                            <label class="form-check-label" for="flexRadioDefault2">
-                              Preciso de Equipamento
-                            </label>
-                          </div>
+                        <div class="div-input">
+                            <select name="escolhaD" id="escolhaDP" required onchange="selecionarP()">
+                                <option selected>--</option>
+                                <option value="doador">Sou doador</option>
+                                <option value="beneficiario">Preciso de equipamento</option>
+                                
+                            </select>
+                            <div class="underline"></div>
+                        </div>
                     </div>
                     <input class="btn-continue disp-none" id="btn-continueP" type="submit" value="continue">
                 </div>

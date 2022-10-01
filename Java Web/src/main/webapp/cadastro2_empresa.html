@@ -66,7 +66,7 @@
 
 
       <!-- começo do formulario pessoa -->
-      <form class="form-empresa" action="">
+      <form class="form-empresa" id="form-empresa" action="" method="post">
 
         <!-- PARTE 1 -->
         <div id="formE1">
@@ -130,27 +130,25 @@
 
           <div class="escolha" id="escolhaEmpresa">
             <h5>Nós:</h5>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="doadorE()">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Sou doador
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="precisoE()">
-              <label class="form-check-label" for="flexRadioDefault2">
-                Preciso de Equipamento
-              </label>
-            </div>
+            <div class="div-input">
+              <select name="escolhaD" id="escolhaDE" required onchange="selecionarE()">
+                  <option selected>--</option>
+                  <option value="doador">Sou doador</option>
+                  <option value="beneficiario">Preciso de equipamento</option>
+                  
+              </select>
+              <div class="underline"></div>
+          </div>
           </div>
 
-		<input type="submit" class="btn-continue disp-none" id="btn-continueE" value="continue">
+		      <input type="submit" class="btn-continue disp-none" id="btn-continueE" value="continue">
 		
+          
         </div>
                 
       </form>
 
-      <!-- BOTAO -->
+      <!-- BOTÕES-->
       <div class="next-prev">
         <!-- BOTAO PREV -->
         <button class="btn-prev disp-none" id="btn-prevE" onclick="retornaEtapaE()">

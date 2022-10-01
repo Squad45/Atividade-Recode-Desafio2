@@ -55,26 +55,48 @@ function retornaEtapaP(){
     continuarP.classList.add("disp-none");
 }
 
+
+
 //para outras paginas
 function doadorP(){
-    let aI = document.getElementById("ancoraP");
-    aI.href = "./cadastro_doacao.html";
+    document.getElementById("form-pessoa").action ="doador";
 }
 function precisoP(){
-    let aI = document.getElementById("ancoraP");
-    aI.href = "./cadastro_preciso.html";
+    document.getElementById("form-pessoa").action ="beneficiario";
 }
 function doadorE(){
-    let aII = document.getElementById("ancoraE");
-    aII.href = "./cadastro_doacao.html";
+    document.getElementById("form-empresa").action ="doador";
 }
 function precisoE(){
-    let aII = document.getElementById("ancoraE");
-    aII.href = "./cadastro_preciso.html";
+    document.getElementById("form-empresa").action ="beneficiario";
 }
 
-const fimForm = document.getElementById("confirm");
 
-fimForm.addEventListener("click", () =>{
-    alert("formulario feito!");
-})
+const selectDoacaoP = document.getElementById("escolhaDP");
+function selecionarP(){
+    let valueEscolha = selectDoacaoP.options[selectDoacaoP.selectedIndex].value;
+    console.log(valueEscolha);
+    if(valueEscolha === "doador"){
+        doadorP();
+    }else if(valueEscolha === "beneficiario"){
+        precisoP();
+    }
+}
+
+
+const selectDoacaoE = document.getElementById("escolhaDE");
+function selecionarE(){
+    let valueEscolha = selectDoacaoE.options[selectDoacaoE.selectedIndex].value;
+    console.log(valueEscolha);
+    if(valueEscolha === "doador"){
+        doadorE();
+    }else if(valueEscolha === "beneficiario"){
+        precisoE();
+    }
+}
+
+// const fimForm = document.getElementById("confirm");
+
+// fimForm.addEventListener("click", () =>{
+//     alert("formulario feito!");
+// })
