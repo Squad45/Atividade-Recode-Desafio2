@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
-	private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/";
+	private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/tecnologia_solidaria";
 	private static final String USERNAME = "root";
-	private static final String PASSWORD = "";
+	private static final String PASSWORD = "084Lb21987JsR10k^";
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	
 	

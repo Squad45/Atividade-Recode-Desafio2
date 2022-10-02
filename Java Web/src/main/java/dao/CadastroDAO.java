@@ -17,35 +17,120 @@ public class CadastroDAO {
 	private static Connection connection = ConnectionFactory.createConnection();
 private static String sql;
 	
+
+	public static void createJuridica(Cadastro cadastro) {
+	
+	//necessário ver mais sobre if e case no mysql para o futuro do projeto
+		if(cadastro.getOpcaoDoador() == "beneficiario") {
+			sql = "INSERT INTO cadastro(codCad, escolha, nome, cnpj, cargo, endereco, nomeInstituicao, email, telefone, opcaoDoador, tipoEquipamento, descricao) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?)";
+		
+			try {
+				 PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				 
+				 
+				 preparedStatement.setString(1, cadastro.getEscolha());
+				 preparedStatement.setString(2, cadastro.getNome());
+				 preparedStatement.setString(3, cadastro.getCnpj());
+				 preparedStatement.setString(4, cadastro.getCargo());
+				 preparedStatement.setInt(5, cadastro.getEndereco().getId());
+				 preparedStatement.setString(6, cadastro.getNomeInstituicao());
+				 preparedStatement.setString(7, cadastro.getEmail());
+				 preparedStatement.setString(8, cadastro.getTelefone());
+				 preparedStatement.setString(9, cadastro.getOpcaoDoador());
+				 preparedStatement.setString(10, cadastro.getDescricao());
+				 
+				 preparedStatement.executeUpdate();
+				 
+				 System.out.println("Beneficiario inserido com sucesso");
+				 
+			 } catch(SQLException e) {
+				 System.out.println("Nao inserido, tente novamente. " + e.getMessage());
+			 }
+		}else if(cadastro.getOpcaoDoador() == "doador"){
+			sql = "INSERT INTO cadastro(codCad, escolha, nome, cnpj, cargo, endereco, nomeInstituicao, email, telefone, opcaoDoador, tipoEquipamento, descricao) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			 
+			try {
+				 PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				 
+				 
+				 preparedStatement.setString(1, cadastro.getEscolha());
+				 preparedStatement.setString(2, cadastro.getNome());
+				 preparedStatement.setString(3, cadastro.getCnpj());
+				 preparedStatement.setString(4, cadastro.getCargo());
+				 preparedStatement.setInt(5, cadastro.getEndereco().getId());
+				 preparedStatement.setString(6, cadastro.getNomeInstituicao());
+				 preparedStatement.setString(7, cadastro.getEmail());
+				 preparedStatement.setString(8, cadastro.getTelefone());
+				 preparedStatement.setString(9, cadastro.getOpcaoDoador());
+				 preparedStatement.setString(10, cadastro.getTipoEquipamento());
+				 preparedStatement.setString(11, cadastro.getDescricao());
+				 
+				 preparedStatement.executeUpdate();
+				 
+				 System.out.println("Inserido com sucesso");
+				 
+			 } catch(SQLException e) {
+				 System.out.println("Nao inserido, tente novamente. " + e.getMessage());
+			 }
+		}
+}
+
+
 	public static void createFisica(Cadastro cadastro) {
-		 sql = "INSERT INTO cadastro VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		 
-		 try {
-			 PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		
+		//necessário ver mais sobre if e case no mysql para o futuro do projeto
+		if(cadastro.getOpcaoDoador() == "beneficiario") {
+			sql = "INSERT INTO cadastro(codCad, escolha, nome, cpf, endereco, email, telefone, opcaoDoador, tipoEquipamento, descricao) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, NULL, ?)";
+			
+			try {
+				 PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				 
+				 
+				 preparedStatement.setString(1, cadastro.getEscolha());
+				 preparedStatement.setString(2, cadastro.getNome());
+				 preparedStatement.setString(3, cadastro.getCpf());
+				 preparedStatement.setInt(4, cadastro.getEndereco().getId());
+				 preparedStatement.setString(5, cadastro.getEmail());
+				 preparedStatement.setString(6, cadastro.getTelefone());
+				 preparedStatement.setString(7, cadastro.getOpcaoDoador());
+				 preparedStatement.setString(8, cadastro.getDescricao());
+				 
+				 preparedStatement.executeUpdate();
+				 
+				 System.out.println("Inserido com sucesso");
+				 
+			 } catch(SQLException e) {
+				 System.out.println("Nao inserido, tente novamente. " + e.getMessage());
+			 }
+		}else if(cadastro.getOpcaoDoador() == "doador"){
+			sql = "INSERT INTO cadastro(codCad, escolha, nome, cpf, endereco, email, telefone, opcaoDoador, tipoEquipamento, descricao) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			 
-			 
-			 preparedStatement.setString(1, cadastro.getEscolha());
-			 preparedStatement.setString(2, cadastro.getNome());
-			 preparedStatement.setString(3, cadastro.getEmail());
-			 preparedStatement.setString(4, cadastro.getCpf());
-			 preparedStatement.setInt(5, cadastro.getEndereco().getId());
-			 preparedStatement.setString(6, cadastro.getTelefone());
-			 preparedStatement.setString(7, cadastro.getOpcaoDoador());
-			 preparedStatement.setString(8, cadastro.getTipoEquipamento());
-			 preparedStatement.setString(9, cadastro.getDescricao());
-			 preparedStatement.setInt(10, cadastro.getId());
-			 
-			 preparedStatement.executeUpdate();
-			 
-			 System.out.println("Inserido com sucesso");
-			 
-		 } catch(SQLException e) {
-			 System.out.println("Nao inserido, tente novamente. " + e.getMessage());
-		 }
+			try {
+				 PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				 
+				 
+				 preparedStatement.setString(1, cadastro.getEscolha());
+				 preparedStatement.setString(2, cadastro.getNome());
+				 preparedStatement.setString(3, cadastro.getCpf());
+				 preparedStatement.setInt(4, cadastro.getEndereco().getId());
+				 preparedStatement.setString(5, cadastro.getEmail());
+				 preparedStatement.setString(6, cadastro.getTelefone());
+				 preparedStatement.setString(7, cadastro.getOpcaoDoador());
+				 preparedStatement.setString(8, cadastro.getTipoEquipamento());
+				 preparedStatement.setString(9, cadastro.getDescricao());
+				 
+				 preparedStatement.executeUpdate();
+				 
+				 System.out.println("Inserido com sucesso");
+				 
+			 } catch(SQLException e) {
+				 System.out.println("Nao inserido, tente novamente. " + e.getMessage());
+			 }
+		}
 	}
 	
 	public static void delete(int clienteId) {
-		sql = "DELETE FROM clientes WHERE id = ?";
+		sql = "DELETE FROM cadastro WHERE codCad = ?";
 		
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -60,9 +145,9 @@ private static String sql;
 		}
 	}
 	
-	public static List<Cadastro> find(String pesquisa){
+	public static List<Cadastro> findFisica(){
 		
-		sql = String.format("SELECT * FROM clientes WHERE nome like '%s%%' OR cpf LIKE '%s%%' ", pesquisa, pesquisa);
+		sql = "SELECT codCad, escolha, nome, cpf, endereco, email, telefone, opcaoDoador, tipoEquipamento, descricao  FROM cadastro";
 		List<Cadastro> cadastros = new ArrayList<Cadastro>();
 		
 		try {
@@ -74,24 +159,70 @@ private static String sql;
 				Cadastro cadastro = new Cadastro();
 				
 				
-				cadastro.setId(resultSet.getInt("id"));
+				cadastro.setId(resultSet.getInt("codCad"));
 				cadastro.setEscolha(resultSet.getString("escolha"));
 				cadastro.setNome(resultSet.getString("nome"));
-				cadastro.setEmail(resultSet.getString("Email"));
-				cadastro.setCpf(resultSet.getString("Cpf"));
+				cadastro.setCpf(resultSet.getString("cpf"));
 				Endereco endereco = new Endereco();
 				cadastro.setEndereco(endereco);
 				cadastro.getEndereco().setId(resultSet.getInt("endereco"));
-				cadastro.setTelefone(resultSet.getString("Telefone"));
-				cadastro.setOpcaoDoador(resultSet.getString("OpcaoDoador"));
-				cadastro.setTipoEquipamento(resultSet.getString("TipoEquipamento"));
+				cadastro.setEmail(resultSet.getString("email"));
+				cadastro.setTelefone(resultSet.getString("telefone"));
+				cadastro.setOpcaoDoador(resultSet.getString("opcaoDoador"));
+				//observar se isso funciona
+				cadastro.setTipoEquipamento(resultSet.getString("tipoEquipamento"));
 				cadastro.setDescricao(resultSet.getString("descricao"));
 				
 				cadastros.add(cadastro);
 				
 			}
 			
-			System.out.println("Encontrado com sucesso");
+			System.out.println("clientes encontrados");
+			return cadastros;
+			
+		} catch(SQLException e) {
+			System.out.println("Erro ao encontrar. " + e.getMessage());
+			return null;
+		}
+		
+		
+	}
+	
+public static List<Cadastro> findJuridica(){
+		
+		sql = "SELECT codCad, codCad, escolha, nome, cnpj, cargo, endereco, nomeInstituicao, email, telefone, opcaoDoador, tipoEquipamento, descricao  FROM cadastro";
+		List<Cadastro> cadastros = new ArrayList<Cadastro>();
+		
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(sql);
+			
+			while (resultSet.next()) {
+				
+				Cadastro cadastro = new Cadastro();
+				
+				
+				cadastro.setId(resultSet.getInt("codCad"));
+				cadastro.setEscolha(resultSet.getString("escolha"));
+				cadastro.setNome(resultSet.getString("nome"));
+				cadastro.setCnpj(resultSet.getString("cnpj"));
+				cadastro.setCargo(resultSet.getString("cargo"));
+				Endereco endereco = new Endereco();
+				cadastro.setEndereco(endereco);
+				cadastro.getEndereco().setId(resultSet.getInt("endereco"));
+				cadastro.setNomeInstituicao(resultSet.getString("nomeInstituicao"));
+				cadastro.setEmail(resultSet.getString("email"));
+				cadastro.setTelefone(resultSet.getString("telefone"));
+				cadastro.setOpcaoDoador(resultSet.getString("opcaoDoador"));
+				//observar se isso funciona
+				cadastro.setTipoEquipamento(resultSet.getString("tipoEquipamento"));
+				cadastro.setDescricao(resultSet.getString("descricao"));
+				
+				cadastros.add(cadastro);
+				
+			}
+			
+			System.out.println("clientes encontrados");
 			return cadastros;
 			
 		} catch(SQLException e) {
@@ -103,7 +234,7 @@ private static String sql;
 	}
 	
 	public static Cadastro findByPk(int cadastroId) {
-		sql = String.format("SELECT * FROM clientes WHERE id = %d ", cadastroId);
+		sql = String.format("SELECT * FROM cadastro WHERE codCad = %d ", cadastroId);
 		
 		try {
 			Statement statement = connection.createStatement();
@@ -135,24 +266,22 @@ private static String sql;
 		}
 	}
 	
-	public static void update(Cadastro cadastro) {
-		sql = "UPDATE clientes SET escolha=?, nome=?, email=?, cpf=?, =?, telefone=?, opcaodoador=?, tipoequipamento=?, descricao=?, WHERE id=?";
+	public static void updateFisica(Cadastro cadastro) {
+		sql = "UPDATE clientes SET escolha=?, nome=?, cpf=?, endereco=?, email=?, telefone=?, opcaodoador=?, tipoequipamento=?, descricao=?, WHERE id=?";
 		 
 		 try {
 			 PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			 
 			 preparedStatement.setString(1, cadastro.getEscolha());
 			 preparedStatement.setString(2, cadastro.getNome());
-			 preparedStatement.setString(3, cadastro.getEmail());
-			 preparedStatement.setString(4, cadastro.getCpf());
-			 
-			 //Endereco
-			 preparedStatement.setString(5, cadastro.getTelefone());
-			 preparedStatement.setString(6, cadastro.getOpcaoDoador());
-			 preparedStatement.setString(7, cadastro.getTipoEquipamento());
-			 preparedStatement.setString(8, cadastro.getDescricao());
-			 preparedStatement.setString(4, cadastro.getCpf());
-			 preparedStatement.setInt(5, cadastro.getId());
+			 preparedStatement.setString(3, cadastro.getCpf());
+			 preparedStatement.setInt(4, cadastro.getEndereco().getId());
+			 preparedStatement.setString(5, cadastro.getEmail());
+			 preparedStatement.setString(6, cadastro.getTelefone());
+			 preparedStatement.setString(7, cadastro.getOpcaoDoador());
+			 preparedStatement.setString(8, cadastro.getTipoEquipamento());
+			 preparedStatement.setString(9, cadastro.getDescricao());
+			 preparedStatement.setInt(10, cadastro.getId());
 			 
 			 preparedStatement.executeUpdate();
 			 
@@ -160,6 +289,23 @@ private static String sql;
 			 
 		 } catch(SQLException e) {
 			 System.out.println("Erro ao atualizar. " + e.getMessage());
+		 }
+	}
+	
+	public static void pegarID(Cadastro cadastro) {
+		 //PEGANDO O ID PARA PODER FAZER O METODO fazerRelacao()
+		 String sql = "SELECT codCad FROM cadastro WHERE cpf="+cadastro.getCpf();
+		 ResultSet resultado = null;
+		 try {
+			 PreparedStatement stmt = connection.prepareStatement(sql);
+			 resultado = stmt.executeQuery(sql);
+			 
+			 if(resultado.next()) {
+				 cadastro.setId(resultado.getInt("codCad"));
+			 }
+			 System.out.println("id encontrado");
+		 }catch (SQLException e) {
+			 System.out.println("houve um erro ao pegar o id" + e.getMessage());
 		 }
 	}
 }

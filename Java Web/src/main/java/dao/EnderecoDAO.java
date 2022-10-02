@@ -17,12 +17,13 @@ private static Connection connection = ConnectionFactory.createConnection();
 	
 	
 	public static void create(Endereco endereco) {
-		String sql = "INSERT INTO endereco VALUES(null, ?, ?, ?)";
+		String sql = "INSERT INTO endereco VALUES(null, ?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, endereco.getCep());
 			stmt.setString(2, endereco.getEndereco());
 			stmt.setString(3, endereco.getPontoRef());
+			stmt.setString(4, endereco.getUf());
 			
 			stmt.executeUpdate();
 			System.out.println("--Correct insert on database");
@@ -33,16 +34,16 @@ private static Connection connection = ConnectionFactory.createConnection();
 		}
 	}
 	public static void delete(int id) {
-		String sql = "DELETE FROM endereco WHERE id = ?";
+		String sql = "DELETE FROM endereco WHERE codEndereco = ?";
 		try {
 			PreparedStatement stmt =connection.prepareStatement(sql);
 			stmt.setInt(1, id);
 			stmt.executeUpdate();
 			
-			System.out.println("--correct delete on cliente");
+			System.out.println("endereço deletado com sucesso");
 			
 		}catch(SQLException e) {
-			System.out.println("--incorrect delete on cliete. " + e.getMessage());
+			System.out.println("houve um erro ao deletar o endereço " + e.getMessage());
 		}
 	}
 	public static List<Endereco> find(String pesquisa){
@@ -59,20 +60,21 @@ private static Connection connection = ConnectionFactory.createConnection();
 				endereco.setCep(result.getString("cep"));
 				endereco.setEndereco(result.getString("endereco"));
 				endereco.setPontoRef(result.getString("pontoref"));
+				endereco.setUf(result.getString("uf"));
 				
 				
 				enderecos.add(endereco);
 			}
-			System.out.println("--correct find enderecos");
+			System.out.println("enderecos encontrados");
 			return enderecos;
 			
 		}catch(SQLException e) {
-			System.out.println("--incorrect find enderecos "+ e.getMessage());
+			System.out.println("--houve um erro ao tentar encontrar os endereços "+ e.getMessage());
 			return null;
 		}
 	}
 	public static Endereco findByPK(int id) {
-		String sql = String.format("SELECT * FROM cliente WHERE id = %d",id);
+		String sql = String.format("SELECT * FROM endereco WHERE codEndereco = %d",id);
 			
 		try {
 			Statement stmt = connection.createStatement();
@@ -83,32 +85,34 @@ private static Connection connection = ConnectionFactory.createConnection();
 				enderecos.setCep(result.getString("Cep"));
 				enderecos.setEndereco(result.getString("endereco"));
 				enderecos.setPontoRef(result.getString("pontoref"));
+				enderecos.setUf(result.getString("uf"));
 				
 				
 			}
-			System.out.println("--correct find endereco");
+			System.out.println("Endereço encontrado");
 			return enderecos; 
 			
 		}catch(SQLException e) {
-			System.out.println("--incorrect find endereco "+ e.getMessage());
+			System.out.println("houve um erro ao tentar encontrar o endereço"+ e.getMessage());
 			return null;
 		}
 	}
 	public static void update(Endereco enderecos) {
-		String sql = "UPDATE cliente SET cep=?, endereco=?, pontoref=?, WHERE id=?";
+		String sql = "UPDATE endereco SET cep=?, endereco=?, pontoref=?, uf=? WHERE codEndereco=?";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, enderecos.getCep());
 			stmt.setString(2, enderecos.getEndereco());
 			stmt.setString(3, enderecos.getPontoRef());
+			stmt.setString(4, enderecos.getUf());
 			stmt.setInt(5, enderecos.getId());
 			
 			stmt.executeUpdate();
-			System.out.println("--Correct update on database");
+			System.out.println("endereço atualizado");
 
 			
 		}catch(SQLException e) {
-			System.out.println("--Incorrect update on database "+ e.getMessage());
+			System.out.println("erro ao tentar atualizar esse endereço "+ e.getMessage());
 		
 		}
 	}
