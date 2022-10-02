@@ -54,55 +54,54 @@ private static Connection connection = ConnectionFactory.createConnection();
 			Statement stmt = connection.createStatement();
 			ResultSet result = stmt.executeQuery(sql);
 			while(result.next()) {
-				Endereco cli = new Endereco();
-				cli.setId(result.getInt("id"));
-				cli.setNome(result.getString("nome"));
-				cli.setCpf(result.getString("cpf"));
-				cli.setNascimento(result.getString("nascimento"));
-				cli.setSituacao(result.getString("situacao"));
+				Endereco endereco = new Endereco();
+				endereco.setId(result.getInt("id"));
+				endereco.setCep(result.getString("cep"));
+				endereco.setEndereco(result.getString("endereco"));
+				endereco.setPontoRef(result.getString("pontoref"));
 				
-				clientes.add(cli);
+				
+				enderecos.add(endereco);
 			}
-			System.out.println("--correct find clientes");
-			return clientes;
+			System.out.println("--correct find enderecos");
+			return enderecos;
 			
 		}catch(SQLException e) {
-			System.out.println("--incorrect find clientes "+ e.getMessage());
+			System.out.println("--incorrect find enderecos "+ e.getMessage());
 			return null;
 		}
 	}
-	public static Cliente findByPK(int id) {
+	public static Endereco findByPK(int id) {
 		String sql = String.format("SELECT * FROM cliente WHERE id = %d",id);
 			
 		try {
 			Statement stmt = connection.createStatement();
 			ResultSet result = stmt.executeQuery(sql);
-			Cliente cli = new Cliente();
+			Endereco enderecos = new Endereco();
 			while(result.next()) {
-				cli.setId(result.getInt("id"));
-				cli.setNome(result.getString("nome"));
-				cli.setCpf(result.getString("cpf"));
-				cli.setNascimento(result.getString("nascimento"));
-				cli.setSituacao(result.getString("situacao"));
+				enderecos.setId(result.getInt("id"));
+				enderecos.setCep(result.getString("Cep"));
+				enderecos.setEndereco(result.getString("endereco"));
+				enderecos.setPontoRef(result.getString("pontoref"));
+				
 				
 			}
-			System.out.println("--correct find cliente");
-			return cli; 
+			System.out.println("--correct find endereco");
+			return enderecos; 
 			
 		}catch(SQLException e) {
-			System.out.println("--incorrect find cliente "+ e.getMessage());
+			System.out.println("--incorrect find endereco "+ e.getMessage());
 			return null;
 		}
 	}
-	public static void update(Cliente cliente) {
-		String sql = "UPDATE cliente SET nome=?, cpf=?, nascimento=?, situacao=? WHERE id=?";
+	public static void update(Endereco enderecos) {
+		String sql = "UPDATE cliente SET cep=?, endereco=?, pontoref=?, WHERE id=?";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, cliente.getNome());
-			stmt.setString(2, cliente.getCpf());
-			stmt.setString(3, cliente.getNascimento());
-			stmt.setString(4, cliente.getSituacao());
-			stmt.setInt(5, cliente.getId());
+			stmt.setString(1, enderecos.getCep());
+			stmt.setString(2, enderecos.getEndereco());
+			stmt.setString(3, enderecos.getPontoRef());
+			stmt.setInt(5, enderecos.getId());
 			
 			stmt.executeUpdate();
 			System.out.println("--Correct update on database");
@@ -111,5 +110,6 @@ private static Connection connection = ConnectionFactory.createConnection();
 		}catch(SQLException e) {
 			System.out.println("--Incorrect update on database "+ e.getMessage());
 		
+		}
 	}
 }

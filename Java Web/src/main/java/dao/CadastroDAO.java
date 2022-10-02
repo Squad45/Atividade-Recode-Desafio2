@@ -10,6 +10,7 @@ import java.util.List;
 
 import connectionFactory.ConnectionFactory;
 import model.Cadastro;
+import model.Endereco;
 
 
 public class CadastroDAO {
@@ -62,7 +63,7 @@ private static String sql;
 	public static List<Cadastro> find(String pesquisa){
 		
 		sql = String.format("SELECT * FROM clientes WHERE nome like '%s%%' OR cpf LIKE '%s%%' ", pesquisa, pesquisa);
-		List<Cadastro> clientes = new ArrayList<Cadastro>();
+		List<Cadastro> cadastros = new ArrayList<Cadastro>();
 		
 		try {
 			Statement statement = connection.createStatement();
@@ -70,21 +71,28 @@ private static String sql;
 			
 			while (resultSet.next()) {
 				
-				Cadastro cliente = new Cadastro();
+				Cadastro cadastro = new Cadastro();
 				
 				
-				cliente.setId(resultSet.getInt("id"));
-				cliente.setNome(resultSet.getString("nome"));
-				cliente.setCpf(resultSet.getString("cpf"));
-				cliente.setNascimento(resultSet.getString("nascimento"));
-				cliente.setSituacao(resultSet.getString("situacao"));
+				cadastro.setId(resultSet.getInt("id"));
+				cadastro.setEscolha(resultSet.getString("escolha"));
+				cadastro.setNome(resultSet.getString("nome"));
+				cadastro.setEmail(resultSet.getString("Email"));
+				cadastro.setCpf(resultSet.getString("Cpf"));
+				Endereco endereco = new Endereco();
+				cadastro.setEndereco(endereco);
+				cadastro.getEndereco().setId(resultSet.getInt("endereco"));
+				cadastro.setTelefone(resultSet.getString("Telefone"));
+				cadastro.setOpcaoDoador(resultSet.getString("OpcaoDoador"));
+				cadastro.setTipoEquipamento(resultSet.getString("TipoEquipamento"));
+				cadastro.setDescricao(resultSet.getString("descricao"));
 				
-				clientes.add(cliente);
+				cadastros.add(cadastro);
 				
 			}
 			
 			System.out.println("Encontrado com sucesso");
-			return clientes;
+			return cadastros;
 			
 		} catch(SQLException e) {
 			System.out.println("Erro ao encontrar. " + e.getMessage());
@@ -94,24 +102,31 @@ private static String sql;
 		
 	}
 	
-	public static Cliente findByPk(int clienteId) {
-		sql = String.format("SELECT * FROM clientes WHERE id = %d ", clienteId);
+	public static Cadastro findByPk(int cadastroId) {
+		sql = String.format("SELECT * FROM clientes WHERE id = %d ", cadastroId);
 		
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(sql);
-			Cliente cliente = new Cliente();
+			Cadastro cadastro = new Cadastro();
 			
 			while (resultSet.next()) {
-				cliente.setId(resultSet.getInt("id"));
-				cliente.setNome(resultSet.getString("nome"));
-				cliente.setCpf(resultSet.getString("cpf"));
-				cliente.setNascimento(resultSet.getString("nascimento"));
-				cliente.setSituacao(resultSet.getString("situacao"));
+				cadastro.setId(resultSet.getInt("id"));
+				cadastro.setEscolha(resultSet.getString("escolha"));
+				cadastro.setNome(resultSet.getString("nome"));
+				cadastro.setEmail(resultSet.getString("email"));
+				cadastro.setCpf(resultSet.getString("cpf"));
+				Endereco endereco = new Endereco();
+				cadastro.setEndereco(endereco);
+				cadastro.getEndereco().setId(resultSet.getInt("endereco"));
+				cadastro.setTelefone(resultSet.getString("telefone"));
+				cadastro.setOpcaoDoador(resultSet.getString("opcaodoador"));
+				cadastro.setTipoEquipamento(resultSet.getString("tipoequipamento"));
+				cadastro.setDescricao(resultSet.getString("descricao"));
 			}
 			
 			System.out.println("Encontrado corretamente por pk clientes");
-			return cliente;
+			return cadastro;
 			
 	} catch(SQLException e) {
 		
@@ -120,17 +135,24 @@ private static String sql;
 		}
 	}
 	
-	public static void update(Cliente cliente) {
-		sql = "UPDATE clientes SET nome=?, cpf=?, nascimento=?, situacao=? WHERE id=?";
+	public static void update(Cadastro cadastro) {
+		sql = "UPDATE clientes SET escolha=?, nome=?, email=?, cpf=?, =?, telefone=?, opcaodoador=?, tipoequipamento=?, descricao=?, WHERE id=?";
 		 
 		 try {
 			 PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			 
-			 preparedStatement.setString(1, cliente.getNome());
-			 preparedStatement.setString(2, cliente.getCpf());
-			 preparedStatement.setString(3, cliente.getNascimento());
-			 preparedStatement.setString(4, cliente.getSituacao());
-			 preparedStatement.setInt(5, cliente.getId());
+			 preparedStatement.setString(1, cadastro.getEscolha());
+			 preparedStatement.setString(2, cadastro.getNome());
+			 preparedStatement.setString(3, cadastro.getEmail());
+			 preparedStatement.setString(4, cadastro.getCpf());
+			 
+			 //Endereco
+			 preparedStatement.setString(5, cadastro.getTelefone());
+			 preparedStatement.setString(6, cadastro.getOpcaoDoador());
+			 preparedStatement.setString(7, cadastro.getTipoEquipamento());
+			 preparedStatement.setString(8, cadastro.getDescricao());
+			 preparedStatement.setString(4, cadastro.getCpf());
+			 preparedStatement.setInt(5, cadastro.getId());
 			 
 			 preparedStatement.executeUpdate();
 			 
@@ -142,4 +164,4 @@ private static String sql;
 	}
 }
 
-}
+
