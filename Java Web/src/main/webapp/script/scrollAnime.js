@@ -1,3 +1,5 @@
+
+//parte necessária para melhorar a visualização da navbar
 const navbar = document.getElementById("nav");
 const limite = document.getElementById("texto-explicativo");
 window.addEventListener("scroll", function(){

@@ -218,6 +218,49 @@
   background: #555;
 }
 
+@media (min-width: 600px) and (max-width: 700px){
+  .conteudo-header{
+    top:0;
+  }
+  .texto-header{
+    width: 20%;
+    padding: 10px;
+  }
+  .texto-header h1{
+    margin-top: 0;
+    font-size: 2.2rem;
+  }
+  .texto-header p{
+    margin-bottom: 0;
+  }
+  .row-flex{
+    flex-direction: column; 
+  }
+  .text{
+    margin-top: 2%;
+  }
+  .flip-card-inner{
+    margin-top: 20px;
+  }
+  .flip-card-front{
+    /* padding: 100px; */
+  }
+  .flip-card-back p{
+    margin-top: 2%;
+
+  }
+
+  .flip-card-front, .flip-card-back{
+    height: auto;
+  }
+
+
+  .apresentação-empresa{
+    margin-top: 150px;
+  }
+
+}
+
 @media (max-width: 850px) {
   .nav:last-child {
     flex-wrap: wrap;
@@ -634,6 +677,49 @@ article .row{
     z-index: 2;
   }
 }
+
+
+/* começando animações */
+.texto-header{
+  animation: fromLeft 1s .6s backwards;
+}
+.img-header{
+  animation: fromRight 1s .6s backwards;
+}
+
+
+@keyframes fromLeft{
+  /* o nome para a animação */
+from{
+/*vai partir daqui  */
+opacity: 0;
+transform: translateX(-100px);
+}
+
+
+to{
+/* para terminar aqui */
+opacity: 1;
+transform: translateX(0);
+}
+}
+
+@keyframes fromRight{
+  /* o nome para a animação */
+from{
+/*vai partir daqui  */
+opacity: 0;
+transform: translateX(100px);
+}
+
+
+to{
+/* para terminar aqui */
+opacity: 1;
+transform: translateY(0);
+}
+}
+
 
 :root {
   --cor-primaria: #1A535C; /*Texto e titulos*/

@@ -59,16 +59,16 @@ function retornaEtapaP(){
 
 //para outras paginas
 function doadorP(){
-    document.getElementById("form-pessoa").action ="doador";
+    document.getElementById("form-pessoa").action ="doadorFisico";
 }
 function precisoP(){
-    document.getElementById("form-pessoa").action ="beneficiario";
+    document.getElementById("form-pessoa").action ="beneficiarioFisico";
 }
 function doadorE(){
-    document.getElementById("form-empresa").action ="doador";
+    document.getElementById("form-empresa").action ="doadorJuridico";
 }
 function precisoE(){
-    document.getElementById("form-empresa").action ="beneficiario";
+    document.getElementById("form-empresa").action ="beneficiarioJuridico";
 }
 
 
