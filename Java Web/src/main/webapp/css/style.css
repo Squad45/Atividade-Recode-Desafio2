@@ -14,8 +14,8 @@
 }
 
 .nav-bg{
-  background: rgb(0,0,0);
-  background: linear-gradient(180deg, rgba(0,0,0,0.6909138655462185) 0%, rgba(0,0,0,0.23153011204481788) 52%, rgba(0,0,0,0) 100%);
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: 1s;
 }
 
 /* PAGINA PRINCIPAL */
