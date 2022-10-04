@@ -116,4 +116,20 @@ private static Connection connection = ConnectionFactory.createConnection();
 		
 		}
 	}
+	public static void pegarID(Endereco endereco) {
+		 //PEGANDO O ID PARA PODER FAZER O METODO fazerRelacao()
+		 String sql = "SELECT codEndereco FROM endereco WHERE cep="+endereco.getCep();
+		 ResultSet resultado = null;
+		 try {
+			 PreparedStatement stmt = connection.prepareStatement(sql);
+			 resultado = stmt.executeQuery(sql);
+			 
+			 if(resultado.next()) {
+				 endereco.setId(resultado.getInt(1));
+			 }
+			 System.out.println("id pego com sucesso" + endereco.getId());
+		 }catch (SQLException e) {
+			 System.out.println("não foi possivel pegar o id "+ e.getMessage());
+		 }
+	 }
 }

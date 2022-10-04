@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.CadastroDAO;
+import dao.EnderecoDAO;
 import model.Cadastro;
 import model.Endereco;
 
@@ -58,6 +59,10 @@ public class CreateCadastro extends HttpServlet {
 		}else if(action.equals("/beneficiarioJuridico") || action.equals("/beneficiarioFisico")) {
 			System.out.println("enviando para o fim do cadastro beneficiario");
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("cadastro_preciso.html");
+			requestDispatcher.forward(request, response);
+		}else if(action.equals("/fimCadastroDoador") || action.equals("/fimCadastroBeneficiario")) {
+			System.out.println("enviando para pagina inicial, cadastro feito");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.html");
 			requestDispatcher.forward(request, response);
 		}
 	}
@@ -141,21 +146,37 @@ public class CreateCadastro extends HttpServlet {
 		}else if(action.equals("/fimCadastroDoador") && cliente.getEscolha().equals("Juridica")) {
 			cliente.setTipoEquipamento(request.getParameter("equipamento"));
 			cliente.setDescricao(request.getParameter("explicacao"));
+			
+			
+			EnderecoDAO.create(cliente.getEndereco());
+			EnderecoDAO.pegarID(cliente.getEndereco());
 			CadastroDAO.createJuridica(cliente);
 			
 			
 		}else if(action.equals("/fimCadastroBeneficiario") && cliente.getEscolha().equals("Juridica")) {
+			cliente.setDescricao(request.getParameter("explicacao"));
+			
+			
+			EnderecoDAO.create(cliente.getEndereco());
+			EnderecoDAO.pegarID(cliente.getEndereco());
 			CadastroDAO.createJuridica(cliente);
 			
 			
 		}else if(action.equals("/fimCadastroDoador") && cliente.getEscolha().equals("Fisica")) {
 			cliente.setTipoEquipamento(request.getParameter("equipamento"));
 			cliente.setDescricao(request.getParameter("explicacao"));
-			CadastroDAO.createFisica(cliente);
 			
+			
+			EnderecoDAO.create(cliente.getEndereco());
+			EnderecoDAO.pegarID(cliente.getEndereco());
+			CadastroDAO.createFisica(cliente);
 			
 		}else if(action.equals("/fimCadastroBeneficiario") && cliente.getEscolha().equals("Fisica")) {
 			cliente.setDescricao(request.getParameter("explicacao"));
+			
+			
+			EnderecoDAO.create(cliente.getEndereco());
+			EnderecoDAO.pegarID(cliente.getEndereco());
 			CadastroDAO.createFisica(cliente);
 			
 			

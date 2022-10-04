@@ -21,7 +21,7 @@ private static String sql;
 	public static void createJuridica(Cadastro cadastro) {
 	
 	//necessário ver mais sobre if e case no mysql para o futuro do projeto
-		if(cadastro.getOpcaoDoador() == "beneficiario") {
+		if(cadastro.getOpcaoDoador().equals("Beneficiario")) {
 			sql = "INSERT INTO cadastro(codCad, escolha, nome, cnpj, cargo, endereco, nomeInstituicao, email, telefone, opcaoDoador, tipoEquipamento, descricao) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?)";
 		
 			try {
@@ -46,7 +46,7 @@ private static String sql;
 			 } catch(SQLException e) {
 				 System.out.println("Nao inserido, tente novamente. " + e.getMessage());
 			 }
-		}else if(cadastro.getOpcaoDoador() == "doador"){
+		}else if(cadastro.getOpcaoDoador().equals("Doador")){
 			sql = "INSERT INTO cadastro(codCad, escolha, nome, cnpj, cargo, endereco, nomeInstituicao, email, telefone, opcaoDoador, tipoEquipamento, descricao) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			 
 			try {
@@ -72,6 +72,8 @@ private static String sql;
 			 } catch(SQLException e) {
 				 System.out.println("Nao inserido, tente novamente. " + e.getMessage());
 			 }
+		}else {
+			System.out.println("ouve um erro de escolha");
 		}
 }
 
@@ -79,7 +81,7 @@ private static String sql;
 	public static void createFisica(Cadastro cadastro) {
 		
 		//necessário ver mais sobre if e case no mysql para o futuro do projeto
-		if(cadastro.getOpcaoDoador() == "beneficiario") {
+		if(cadastro.getOpcaoDoador().equals("Beneficiario")) {
 			sql = "INSERT INTO cadastro(codCad, escolha, nome, cpf, endereco, email, telefone, opcaoDoador, tipoEquipamento, descricao) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, NULL, ?)";
 			
 			try {
@@ -102,7 +104,7 @@ private static String sql;
 			 } catch(SQLException e) {
 				 System.out.println("Nao inserido, tente novamente. " + e.getMessage());
 			 }
-		}else if(cadastro.getOpcaoDoador() == "doador"){
+		}else if(cadastro.getOpcaoDoador().equals("Doador")){
 			sql = "INSERT INTO cadastro(codCad, escolha, nome, cpf, endereco, email, telefone, opcaoDoador, tipoEquipamento, descricao) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			 
 			try {
@@ -126,6 +128,8 @@ private static String sql;
 			 } catch(SQLException e) {
 				 System.out.println("Nao inserido, tente novamente. " + e.getMessage());
 			 }
+		}else {
+			System.out.println("ocorreu um erro na escolha");
 		}
 	}
 	
