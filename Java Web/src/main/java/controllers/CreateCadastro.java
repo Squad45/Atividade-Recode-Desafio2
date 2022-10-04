@@ -18,7 +18,7 @@ import model.Endereco;
 /**
  * Servlet implementation class CreateCadastro
  */
-@WebServlet({ "/criandoCadastro", "/pessoaFisica", "/pessoaJuridica", "/doadorJuridico", "/beneficiarioJuridico", "/doadorFisico", "/beneficiarioFisico", "/fimCadastroDoador", "/fimCadastroBeneficiario"})
+@WebServlet({ "/criandoCadastro", "/pessoaFisica", "/pessoaJuridica", "/doadorJuridico", "/beneficiarioJuridico", "/doadorFisico", "/beneficiarioFisico", "/fimCadastroDoador", "/fimCadastroBeneficiario", "/delete"})
 public class CreateCadastro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//talvez tenha sido melhor criar um servlet pra cada tipo de cliente
@@ -67,6 +67,14 @@ public class CreateCadastro extends HttpServlet {
 			System.out.println("cadastro feito");
 			request.setAttribute("cliente", cliente);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("sucessojsp.jsp");
+			requestDispatcher.forward(request, response);
+			
+			
+		}else if(action.equals("/delete")) {
+			CadastroDAO.pegarID(cliente);
+			int id = cliente.getId();
+			CadastroDAO.delete(id);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.html");
 			requestDispatcher.forward(request, response);
 		}
 	}

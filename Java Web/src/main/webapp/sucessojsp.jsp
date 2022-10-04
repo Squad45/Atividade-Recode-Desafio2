@@ -38,6 +38,12 @@
       <!-- titulo -->
           <h3>Obrigado por acreditar em nós, ${cliente.getNome()} !</h3>
           <h2>entraremos em contato assim que o avaliarmos</h2>
+          <form class="form-pessoa" action="delete" method="GET">
+              <div class="div-input">
+                <input type="submit" class="btn btn-danger" value="Deletar">
+                
+              </div>
+          </form>
 		  <a class="ancora-escolha " href="index.html">Voltar para inicio</a>
       </main>
     </section>
