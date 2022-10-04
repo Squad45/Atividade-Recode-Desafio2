@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.AvaliacaoDAO;
 import dao.CadastroDAO;
 import dao.EnderecoDAO;
 import model.Cadastro;
@@ -60,9 +61,12 @@ public class CreateCadastro extends HttpServlet {
 			System.out.println("enviando para o fim do cadastro beneficiario");
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("cadastro_preciso.html");
 			requestDispatcher.forward(request, response);
+			
+			
 		}else if(action.equals("/fimCadastroDoador") || action.equals("/fimCadastroBeneficiario")) {
-			System.out.println("enviando para pagina inicial, cadastro feito");
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.html");
+			System.out.println("cadastro feito");
+			request.setAttribute("cliente", cliente);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("sucessojsp.jsp");
 			requestDispatcher.forward(request, response);
 		}
 	}
@@ -151,6 +155,9 @@ public class CreateCadastro extends HttpServlet {
 			EnderecoDAO.create(cliente.getEndereco());
 			EnderecoDAO.pegarID(cliente.getEndereco());
 			CadastroDAO.createJuridica(cliente);
+			CadastroDAO.pegarID(cliente);
+			int id = cliente.getId();
+			AvaliacaoDAO.adicionarParaAvalicao(id);
 			
 			
 		}else if(action.equals("/fimCadastroBeneficiario") && cliente.getEscolha().equals("Juridica")) {
@@ -160,6 +167,9 @@ public class CreateCadastro extends HttpServlet {
 			EnderecoDAO.create(cliente.getEndereco());
 			EnderecoDAO.pegarID(cliente.getEndereco());
 			CadastroDAO.createJuridica(cliente);
+			CadastroDAO.pegarID(cliente);
+			int id = cliente.getId();
+			AvaliacaoDAO.adicionarParaAvalicao(id);
 			
 			
 		}else if(action.equals("/fimCadastroDoador") && cliente.getEscolha().equals("Fisica")) {
@@ -170,6 +180,9 @@ public class CreateCadastro extends HttpServlet {
 			EnderecoDAO.create(cliente.getEndereco());
 			EnderecoDAO.pegarID(cliente.getEndereco());
 			CadastroDAO.createFisica(cliente);
+			CadastroDAO.pegarID(cliente);
+			int id = cliente.getId();
+			AvaliacaoDAO.adicionarParaAvalicao(id);
 			
 		}else if(action.equals("/fimCadastroBeneficiario") && cliente.getEscolha().equals("Fisica")) {
 			cliente.setDescricao(request.getParameter("explicacao"));
@@ -178,6 +191,9 @@ public class CreateCadastro extends HttpServlet {
 			EnderecoDAO.create(cliente.getEndereco());
 			EnderecoDAO.pegarID(cliente.getEndereco());
 			CadastroDAO.createFisica(cliente);
+			CadastroDAO.pegarID(cliente);
+			int id = cliente.getId();
+			AvaliacaoDAO.adicionarParaAvalicao(id);
 			
 			
 		}

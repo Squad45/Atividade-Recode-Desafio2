@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -34,16 +36,9 @@
   
   
       <!-- titulo -->
-          <h3>Escolha como quer se cadastrar</h3>
-
-          <form class="form-pessoa" id="frmEscolha" action="" method="POST">
-              <div class="div-input">
-                               
-                <input type="submit" name="instituicao" class="ancora-escolha " id="escolha-1" value="Empresa/Instituição">
-                <input type="submit" name="pessoa" class="ancora-escolha " id="escolha-2" value="Pessoa">
-                
-              </div>
-          </form>
+          <h3>Obrigado por acreditar em nós, ${cliente.getNome()} !</h3>
+          <h2>entraremos em contato assim que o avaliarmos</h2>
+		  <a class="ancora-escolha " href="index.html">Voltar para inicio</a>
       </main>
     </section>
 
@@ -64,14 +59,6 @@
     </section>
 
 
-    <script>
-    document.getElementById("escolha-1").onclick = function(){
-     	document.getElementById("frmEscolha").action ="pessoaJuridica";
-    }
-    document.getElementById("escolha-2").onclick = function(){
-     	document.getElementById("frmEscolha").action ="pessoaFisica";
-    }
-    </script>
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>

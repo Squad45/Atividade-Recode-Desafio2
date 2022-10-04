@@ -15,7 +15,7 @@ import model.Endereco;
 
 public class CadastroDAO {
 	private static Connection connection = ConnectionFactory.createConnection();
-private static String sql;
+	private static String sql;
 	
 
 	public static void createJuridica(Cadastro cadastro) {
@@ -238,7 +238,7 @@ public static List<Cadastro> findJuridica(){
 	}
 	
 	public static Cadastro findByPk(int cadastroId) {
-		sql = String.format("SELECT * FROM cadastro WHERE codCad = %d ", cadastroId);
+		sql = "SELECT * FROM cadastro WHERE codCad ="+ cadastroId;
 		
 		try {
 			Statement statement = connection.createStatement();
@@ -256,7 +256,6 @@ public static List<Cadastro> findJuridica(){
 				cadastro.getEndereco().setId(resultSet.getInt("endereco"));
 				cadastro.setTelefone(resultSet.getString("telefone"));
 				cadastro.setOpcaoDoador(resultSet.getString("opcaodoador"));
-				cadastro.setTipoEquipamento(resultSet.getString("tipoequipamento"));
 				cadastro.setDescricao(resultSet.getString("descricao"));
 			}
 			
@@ -297,7 +296,6 @@ public static List<Cadastro> findJuridica(){
 	}
 	
 	public static void pegarID(Cadastro cadastro) {
-		 //PEGANDO O ID PARA PODER FAZER O METODO fazerRelacao()
 		 String sql = "SELECT codCad FROM cadastro WHERE cpf="+cadastro.getCpf();
 		 ResultSet resultado = null;
 		 try {
